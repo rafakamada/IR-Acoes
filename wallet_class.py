@@ -55,6 +55,35 @@ class stock_wallet:
         month_transaction_list = self.get_month_transactions(month, year)
         sell_transactions = list(filter(lambda x: x['buy_or_sell'] == 'sell', month_transaction_list))
         if sell_transactions == []:
-            return 0
-        balaces_list = list(map(lambda x: x['balance'], sell_transactions))
-        return reduce(lambda x,y: x+y, balaces_list)
+            return {
+                'month': f'{month}/{year}',
+                'balance': 0,
+                '20k_DARF': False
+            }
+
+        sold_amount_map = map(
+            lambda x: x['price'] * x['quantity'], 
+            sell_transactions
+            )
+        this_month_total_amount = reduce(lambda x, y: x+y, sold_amount_map)
+
+        balaces_map = map(lambda x: x['balance'], sell_transactions)
+        this_month_balance = reduce(lambda x, y: x+y, balaces_map)
+
+        this_month_results = {
+            'month': f'{month}/{year}',
+            'balance': this_month_balance,
+            '20k_DARF': this_month_total_amount >= 20000
+        }
+        return this_month_results
+
+    def get_year_results(self, year):
+        months_list = [i for i in range(1,13)]
+        results_list = list(
+            map(
+                lambda x: self.get_month_balance(x, year),
+                months_list
+                )
+            )
+        
+        return results_list
