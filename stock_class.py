@@ -53,7 +53,7 @@ class stock:
     
     def sell(self, date, quantity, price):
         if quantity > self.sum_available_stocks():
-            print("fodeu")
+            print("tentando vender o que não tem")
             return 
         
         def sell_units(self, quantity_to_be_sold, price, operation_balance):
