@@ -87,3 +87,19 @@ class stock_wallet:
             )
         
         return results_list
+
+    def get_year_non_tributable_result(self, year):
+        results_list = self.get_year_results(year)
+        non_tributable_results = filter(
+            lambda x: not x['20k_DARF'],
+            results_list
+            )
+        this_year_non_tributable_balances = map(
+            lambda x: x['balance'],
+            non_tributable_results
+        )
+        this_year_non_tributable_result = reduce(
+            lambda x, y: x + y,
+            this_year_non_tributable_balances
+            )
+        return this_year_non_tributable_result
