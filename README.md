@@ -10,7 +10,7 @@ Pensei nesse projeto com dois tipos de uso em mente:
 
 ### Uso anual
 Um exemplo de uso está no notebook `multi_transaction_example.ipynb`. Nele, um histórico de transações fictícias é carregado e é refletido na carteira.
-Para ter essa planilha do histórico, utilizei essa [outra ferramenta](https://leitordenotas.github.io/) que, para notas de corretagem de até R$5000, é gratuita. 
+Para ter essa planilha do histórico, utilizei essa [outra ferramenta](https://leitordenotas.github.io/) que, para notas de corretagem de até R$5000, é gratuita. Uma outra opção para compilar as transações em forma tabular é acessando seu [relatório de negociações na área do investidor no site da B3](https://www.investidor.b3.com.br/relatorios/negociacao)
 
 ### Uso contínuo ao longo do ano
 Um uso ao longo do ano seria resumido em:
